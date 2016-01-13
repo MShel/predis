@@ -23,7 +23,7 @@ use Predis\Protocol\ProtocolException;
  */
 abstract class AbstractConnection implements NodeConnectionInterface
 {
-    private $resource;
+    protected $resource;
     private $cachedId;
 
     protected $parameters;
@@ -186,7 +186,7 @@ abstract class AbstractConnection implements NodeConnectionInterface
      */
     public function getResource()
     {
-        if (isset($this->resource)) {
+        if ($this->isConnected()) {
             return $this->resource;
         }
 
