@@ -155,7 +155,7 @@ class StreamConnection extends AbstractConnection
      */
     public function isConnected()
     {
-        return isset($this->resource) && !feof($this->resource);    
+        return isset($this->resource) && !feof($this->resource);
     }
 
     /**
@@ -189,6 +189,7 @@ class StreamConnection extends AbstractConnection
      */
     protected function write($buffer)
     {
+        $this->disconnect();
         $socket = $this->getResource();
 
         while (($length = strlen($buffer)) > 0) {
