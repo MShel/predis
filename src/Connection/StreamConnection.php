@@ -189,7 +189,6 @@ class StreamConnection extends AbstractConnection
      */
     protected function write($buffer)
     {
-        $this->disconnect();
         $socket = $this->getResource();
 
         while (($length = strlen($buffer)) > 0) {
